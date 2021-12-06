@@ -1,8 +1,11 @@
-﻿namespace AlexaSkillsAnasinf.Fichajes.Data
+﻿namespace AlexaSkillsAnasinf.Fichajes.Data;
+
+public class SqlConfiguration
 {
-    public class SqlConfiguration
+    public SqlConfiguration(string connectionString)
     {
-        public string ConnectionString { get; }
-        public SqlConfiguration(string connectionString) => ConnectionString = connectionString;
+        ConnectionString = connectionString;
     }
+
+    public string ConnectionString { get; }
 }

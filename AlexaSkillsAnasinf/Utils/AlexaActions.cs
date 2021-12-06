@@ -1,17 +1,17 @@
-﻿
+﻿using Alexa.NET;
 
-namespace AlexaSkillsAnasinf.Utils
+namespace AlexaSkillsAnasinf.Utils;
+
+public class AlexaActions
 {
-    public class AlexaActions
+    public static SkillResponse MakeSkillResponse(string responseText)
     {
-        public static SkillResponse MakeSkillResponse(string responseText)
-        {
-            return Alexa.NET.ResponseBuilder.Tell(responseText);
-        }
-        public static SkillResponse AskSkillResponse(string responseText)
-        {
-            var reprompt = new Reprompt("No he encontrado nada");
-            return Alexa.NET.ResponseBuilder.Ask(responseText, reprompt);
-        }
+        return ResponseBuilder.Tell(responseText);
+    }
+
+    public static SkillResponse AskSkillResponse(string responseText)
+    {
+        var reprompt = new Reprompt("No he encontrado nada");
+        return ResponseBuilder.Ask(responseText, reprompt);
     }
 }

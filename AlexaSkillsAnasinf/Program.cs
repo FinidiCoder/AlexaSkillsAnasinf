@@ -1,4 +1,4 @@
-using System.Data.SqlClient;
+using AlexaSkillsAnasinf.Fichajes.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +9,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var constBuilder = new SqlConnectionStringBuilder(builder.Configuration.GetConnectionString("Fichajes"));
+var sqlConnectionConfigurationFichajes =
+    new SqlConfiguration(builder.Configuration.GetConnectionString("SqlConnectionFichajes"));
+Console.WriteLine(sqlConnectionConfigurationFichajes);
+builder.Services.AddSingleton(sqlConnectionConfigurationFichajes);
 
 var app = builder.Build();
 
