@@ -1,17 +1,17 @@
-using AlexaSkillsAnasinf.Fichajes.Data;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddControllers().AddNewtonsoftJson();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var sqlConnectionConfigurationFichajes =
     new SqlConfiguration(builder.Configuration.GetConnectionString("SqlConnectionFichajes"));
-Console.WriteLine(sqlConnectionConfigurationFichajes);
 builder.Services.AddSingleton(sqlConnectionConfigurationFichajes);
 
 var app = builder.Build();
@@ -23,9 +23,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseRouting();
 //app.UseHttpsRedirection();
 
-app.UseAuthorization();
+//app.UseAuthorization();
 
 app.MapControllers();
 

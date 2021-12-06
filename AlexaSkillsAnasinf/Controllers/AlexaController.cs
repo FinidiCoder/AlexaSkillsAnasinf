@@ -1,6 +1,4 @@
-﻿using AlexaSkillsAnasinf.Utils;
-
-namespace AlexaSkillsAnasinf.Controllers;
+﻿namespace AlexaSkillsAnasinf.Controllers;
 
 [Route("[controller]")]
 [ApiController]
